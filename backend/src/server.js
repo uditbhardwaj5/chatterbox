@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js";
 import { connectDB } from "./lib/db.js";
+import cors from "cors";
 
 
 const app = express();
@@ -13,7 +14,19 @@ const _dirname = path.resolve();
 
 const PORT = ENV.PORT || 3000;
 
+// In dev, allow localhost origins if CLIENT_URL is not set (avoids "network error")
+const corsOrigin = ENV.CLIENT_URL || (ENV.NODE_ENV !== "production"
+  ? (origin, cb) => {
+      const allowed = !origin || /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin);
+      cb(null, allowed ? origin : false);
+    }
+  : false);
+
 app.use(express.json()); //req.body
+app.use(cors({
+  origin: corsOrigin,
+  credentials: true,
+}));
 app.use(cookieParser());
 
 app.use("/api/auth", authRoutes);
