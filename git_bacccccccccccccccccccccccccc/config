@@ -1,8 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = false
-	logallrefupdates = true
-[branch "chatpage"]
-	gk-last-accessed = 2026-02-08T11:06:18.446Z
-	gk-last-modified = 2026-02-08T11:06:18.446Z
