@@ -181,9 +181,3 @@ npm run dev
 npm run build
 npm start
 ```
-
-### 6. Access the Application
-
-- **Frontend:** http://localhost:5173
-- **Backend API:** http://localhost:3000
-
